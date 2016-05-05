@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<!-- Version 3.0, C++ code generator of LessChatCore
+  - Designed by Frank Lin © 2015-2016
+ -->
+
+<module>
+  <define name='delete_my_tasks' description='this->DeleteMyTasksFromCache();'/>
+  <define name='save_my_tasks' description='this->SaveMyTasksToCache(tasks);'/>
+  <define name='save_lists' description='ListManager::DefaultManager()->SaveListsToCache(lists);'/>
+  <define name='delete_comments_by_task_id' description='CommentManager::DefaultManager()->DeleteCommentsFromCache(lesschat::ApplicationType::TASK, task_id);'/>
+  <define name='save_comments' description='CommentManager::DefaultManager()->SaveCommentsToCache(comments);'/>
+  <define name='delete_by_parent_id' description='this->DeleteTasksFromCacheByParentId(task_id);'/>
+  <define name='save_attachments' description='EntityManager::DefaultManager()->SaveEntitiesToCache(attachments);'/>
+  <define name='delete_attachments_by_task_id' description='EntityManager::DefaultManager()->DeleteEntitiesFromCacheByTargetId(task_id);'/>
+
+ <!-- 任务相关 -->
+ <group name='task'>
+    <!-- 任务 -->
+    <class name='Task'>
+      <manager name='TaskManager'>
+
+        <!-- 获取分配给我的任务-->
+        <api name='GetTasksAssignedToMe' alias='GetTasksAssignedToMe' method='GET' uri='/api/mobile/tasks/inbox?ts=uncompleted'>
+          <inputs>
+          </inputs>
+          <outputs>
+            <variable name='tasks' type='[{Task}]' json_path='data' cache='#delete_my_tasks,#save_my_tasks'/>
+          </outputs>
+        </api>
+        <!-- 获取项目中的列表和任务-->
+        <api name='GetTasksAndListsInProject' alias='GetTasksAndListsInProject' method='GET' uri='/api/mobile/tasks/projects/[project_id]?ed=true'>
+          <inputs>
+            <variable name='project_id' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <variable name='tasks' type='[{Task}]' json_path='data/tasks' cache='deletes(project_id),saves'/>
+            <variable name='lists' type='[{List}]' json_path='data/entries' cache='#save_lists'/>
+          </outputs>
+        </api>
+        <!-- 获取任务详情-->
+        <api name='GetTaskById' alias='GetTaskById' method='GET' uri='/api/mobile/tasks/[task_id]'>
+          <inputs>
+            <variable name='task_id' type='string'/>
+          </inputs>
+          <outputs>
+            <variable name='task' type='{Task}' json_path='data' cache='save'/>
+            <variable name='child_tasks' type='[{Task}]' json_path='data/children' cache='#delete_by_parent_id,saves'/>
+            <variable name='comments' type='[{Comment}]' json_path='data/comments' cache='#delete_comments_by_task_id,#save_comments'/>
+            <variable name='attachments' type='[{File}]' json_path='data/attachments' cache='#delete_attachments_by_task_id,#save_attachments'/>
+          </outputs>
+        </api>
+        <!-- 删除任务的标签-->
+        <api name='DeleteToRemoveTagFromTask' alias='RemoveTagFromTask' method='DELETE' uri='/api/tasks/[task_id]/tags/[tag_id]'>
+          <inputs>
+            <variable name='tag_id' type='string'/>
+            <variable name='task_id' type='string'/>
+          </inputs>
+          <outputs>
+          </outputs>
+        </api>
+        <!-- 分配任务给用户-->
+        <api name='PutToAssignTaskToUser' alias='AssignTaskToUser' method='PUT' uri='/api/tasks/[task_id]/assign/[uid]'>
+          <inputs>
+            <variable name='task_id' type='string' capture='true'/>
+            <variable name='uid' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:task_id(uid)'/>
+          </outputs>
+        </api>
+        <!-- 创建任务-->
+        <api name='PostToCreateTask' alias='CreateTask' method='POST' uri='/api/task'>
+          <inputs>
+            <variable name='title' type='string' json_path='title'/>
+            <variable name='project_id' type='string' json_path='project'/>
+            <variable name='list_id' type='string' json_path='entry'/>
+            <variable name='due' type='time' json_path='due_date/date'/>
+            <variable name='assigned_to' type='string' json_path='assignee'/>
+            <variable name='parent_task_id' type='string' json_path='parent'/>
+            <variable name='visibility' type='enum' enum='Task.Visibility' json_path='visibility'/>
+          </inputs>
+          <outputs>
+            <variable name='task' type='{Task}' json_path='data' cache='save'/>
+          </outputs>
+        </api>
+        <!-- 添加关注标签-->
+        <api name='PutToSubscribeTag' alias='SubscribeTag' method='PUT' uri='/api/tags/[tag_id]/favorite'>
+          <inputs>
+            <variable name='tag_id' type='string'/>
+          </inputs>
+          <outputs>
+          </outputs>
+        </api>
+        <!-- 取消关注标签-->
+        <api name='DeleteToRemoveSubscribtionOfTag' alias='RemoveSubscribtionOfTag' method='DELETE' uri='/api/tags/[tag_id]/favorite'>
+          <inputs>
+            <variable name='tag_id' type='string'/>
+          </inputs>
+          <outputs>
+          </outputs>
+        </api>
+        <!-- 分享任务 --> <!-- &符号解析不了，'&ref_type='这里去掉了 -->
+        <api name='PostToShareTaskToChannel' alias='ShareTaskToChannel' method='POST' uri='/api/tasks/[task_id]/send?ref_id=[channel_id]ref_type=[channel_type]'>
+          <inputs>
+            <variable name='task_id' type='string'/>
+            <variable name='channel_id' type='string'/>
+            <variable name='channel_type' type='enum' enum='Message.ChannelType'/>
+          </inputs>
+          <outputs>
+          </outputs>
+        </api>
+        <!-- 移动任务 -->
+        <api name='PutToMoveTask' alias='MoveTask' method='PUT' uri='/api/tasks/[task_id]/transfer/[project_id]?eid=[list_id]'>
+          <inputs>
+            <variable name='task_id' type='string' capture='true'/>
+            <variable name='project_id' type='string' capture='true'/>
+            <variable name='list_id' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:task_id(project_id)'/>
+          </outputs>
+        </api>
+        <!-- 设置任务可访问性 -->
+        <api name='PutToSetTaskVisibility' alias='SetTaskVisibility' method='PUT' uri='/api/tasks/[task_id]'>
+          <inputs>
+            <variable name='task_id' type='string' capture='true'/>
+            <variable name='visibility' type='enum' enum='Task.Visibility' json_path='visibility' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:task_id(visibility)'/>
+          </outputs>
+        </api>
+        <!-- 设置任务的处理优先级 -->
+        <api name='PutToSetTaskPlan' alias='SetTaskPlan' method='PUT' uri='/api/tasks/[task_id]/plan'>
+          <inputs>
+            <variable name='task_id' type='string' capture='true'/>
+            <variable name='plan' type='enum' enum='Task.Plan' json_path='plan' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:task_id(plan)'/>
+          </outputs>
+        </api>
+
+        <!-- 缓存 -->
+
+        <!-- 默认使用 tasks 表，另外创建出一个 tasks_objects 表，共享字段-->
+        <tables default='tasks'>
+          <table name='task_objects'/>
+        </tables>
+
+        <save singular='true' tables='task_objects,tasks'/>
+        <save plural='true'/>
+        <fetch singular='true' by='task_id' tables='task_objects,tasks'/>
+        <fetches plural='true' by='project_id' sort='position' desc='true'/>
+        <fetches plural='true' by='assigned_to'/>
+        <fetches plural='true' by='parent_id'/>
+        <delete plural='true' by='task_id' tables='task_objects,tasks'/>
+        <delete plural='true' by='project_id'/>
+        <delete plural='true' by='assigned_to'/>
+        <delete plural='true' by='parent_id'/>
+      </manager>
+      <enum name='Type'>
+        <value int_value='0' alias='NORMAL'/>
+        <value int_value='1' alias='TEMPLATE'/>
+      </enum>
+      <enum name='Priority'>
+        <value int_value='1' alias='LOW'/>
+        <value int_value='2' alias='NORMAL'/>
+        <value int_value='3' alias='HIGH'/>
+      </enum>
+      <enum name='Visibility'>
+        <value int_value='0' alias='PUBLIC'/>
+        <value int_value='1' alias='PRIVATE'/>
+        <value int_value='2' alias='PERSONAL'/>
+      </enum>
+      <enum name='Plan'>
+        <value int_value='0' alias='NEW'/>
+        <value int_value='1' alias='TODAY'/>
+        <value int_value='2' alias='UPCOMING'/>
+        <value int_value='3' alias='LATER'/>
+      </enum>
+      <variable name='task_id' type='string' json_path='_id' sql_flag='primary_key'/>
+      <variable name='title' type='string' json_path='title'/>
+      <variable name='list_id' type='string' json_path='entry'/>
+      <variable name='project_id' type='string' json_path='project'/>
+      <variable name='parent_id' type='string' json_path='parent'/>
+      <variable name='description' type='string' json_path='description'/>
+
+      <variable name='created_at' type='time' json_path='created_at'/>
+      <variable name='created_by' type='string' json_path='created_by'/>
+
+      <variable name='last_updated_at' type='time' json_path='updated_at'/>
+      <variable name='position' type='int' json_path='position'/>
+      <variable name='task_number' type='string' json_path='identifier'/>
+
+      <variable name='archived' type='bool' json_path='is_archived'/>
+      <variable name='completed' type='bool' json_path='completion/is_completed'/>
+      <variable name='deleted' type='bool' json_path='is_deleted'/>
+      <variable name='permission' type='int' json_path='permission'/>
+
+      <variable name='num_comments' type='int' json_path='comment_count'/>
+      <variable name='num_attachments' type='int' json_path='attachment_count'/>
+      <variable name='num_child_tasks' type='int' json_path='children_count'/>
+      <variable name='num_completed_child_tasks' type='int' json_path='completed_children_count'/>
+      <variable name='num_like' type='int' json_path='like_count'/>
+
+      <variable name='assigned_to' type='string' json_path='assignment/asignee'/>
+      <variable name='assigned_by' type='string' json_path='assignment/assigner'/>
+
+      <variable name='due' type='time' json_path='due_date/date'/>
+      <variable name='with_time' type='bool' json_path='due_date/with_time'/>
+
+      <variable name='type' type='enum' enum='Task.Type' json_path='type'/>
+      <variable name='priority' type='enum' enum='Task.Priority' json_path='priority'/>
+      <variable name='visibility' type='enum' enum='Task.Visibility' json_path='visibility'/>
+      <variable name='plan' type='enum' enum='Task.Plan' json_path='plan'/>
+
+      <variable name='tags' type='[string]' json_path='tags' json_search_path='_id'/>
+      <variable name='watchers' type='[string]' json_path='watchers' json_search_path='uid'/>
+      <variable name='comments' type='[string]' json_path='comments' json_search_path='_id'/>
+      <variable name='like_uids' type='[string]' json_path='likes' json_search_path='created_by'/>
+      <variable name='attachments' type='[string]' json_path='attachments' json_search_path='_id'/>
+    </class>
+    <!-- 项目分组 -->
+    <class name='ProjectGroup'>
+      <manager name='ProjectGroupManager'>
+        <save singular='true'/>
+        <save plural='true'/>
+        <fetches plural='true'/>
+        <fetch singular='true' by='group_id'/>
+        <delete plural='true'/>
+        <delete singular='true' by='group_id'/>
+      </manager>
+      <variable name='group_id' type='string' json_path='_id' sql_flag='primary_key'/>
+      <variable name='team_id' type='string' json_path='team'/>
+      <variable name='owner' type='string' json_path='owner'/>
+      <variable name='name' type='string' json_path='name'/>
+      <variable name='position' type='int' json_path='position'/>
+    </class>
+    <!-- 项目列表 -->
+    <class name='List'>
+      <manager name='ListManager'>
+        <!-- 创建列表 -->
+        <api name='PostToCreateList' alias='CreateList' method='POST' uri='/api/projects/[project_id]/entry'>
+          <inputs>
+            <variable name='name' type='string' json_path='name'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+            <variable name='list' type='{List}' json_path='data' cache='save'/><!-- 此接口返回数据中没有project_id，需自行添加 -->
+          </outputs>
+        </api>
+        <!-- 修改列表 -->
+        <api name='PutToEditList' alias='EditList' method='PUT' uri='/api/projects/[project_id]/entries/[list_id]'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='name' type='string' json_path='name' capture='true'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:list_id(name)'/>
+          </outputs>
+        </api>
+        <!-- 订阅列表 -->
+        <api name='PutToWatchList' alias='WatchList' method='PUT' uri='/api/projects/[project_id]/entries/[list_id]/watch'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:list_id(watching)'/>
+          </outputs>
+        </api>
+        <!-- 取消订阅 -->
+        <api name='PutToStopWatchingList' alias='StopWatchingList' method='PUT' uri='/api/projects/[project_id]/entries/[list_id]/unwatch'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:list_id(watching)'/>
+          </outputs>
+        </api>
+        <!-- 归档列表中已完成任务 -->
+        <api name='PutToArchiveTasksInList' alias='ArchiveTasksInList' method='PUT' uri='/api/projects/[project_id]/entries/[list_id]/archive'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+          </outputs>
+        </api>
+        <!-- 移动列表 -->
+        <api name='PutToMoveList' alias='MoveList' method='PUT' uri='/api/projects/[origin_project_id]/entries/[list_id]/transfer/[target_project_id]'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='origin_project_id' type='string'/>
+            <variable name='target_project_id' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:list_id(project_id)'/>
+          </outputs>
+        </api>
+        <!-- 拷贝列表 -->
+        <api name='PutToCopyList' alias='CopyList' method='POST' uri='/api/projects/[origin_project_id]/entries/[list_id]/clone/[target_project_id]'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='origin_project_id' type='string'/>
+            <variable name='target_project_id' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <!-- 没有返回List数据，需接口中添加 -->
+          </outputs>
+        </api>
+        <!-- 删除列表 -->
+        <api name='PutToRemoveList' alias='RemoveList' method='DELETE' uri='/api/projects/[project_id]/entries/[list_id]'>
+          <inputs>
+            <variable name='list_id' type='string' capture='true'/>
+            <variable name='project_id' type='string'/>
+          </inputs>
+          <outputs>
+            <extra cache='delete(list_id)'/>
+          </outputs>
+        </api>
+        
+        <save singular='true'/>
+        <save plural='true'/>
+        <fetch singular='true' by='list_id'/>
+        <fetches plural='true'/>
+        <fetches plural='true' by='project_id'/>
+        <delete singular='true' by='list_id'/>
+        <delete plural='true'/>
+        <delete plural='true' by='project_id'/>
+      </manager>
+      <variable name='list_id' type='string' json_path='_id' sql_flag='primary_key'/>
+      <variable name='name' type='string' json_path='name'/>
+      <variable name='position' type='int' json_path='position'/>
+      <variable name='project_id' type='string' json_path=''/>
+      <variable name='watching' type='bool' json_path='is_watching'/>
+    </class>
+    <!-- 项目 -->
+    <class name='Project'>
+      <manager name='ProjectManager'>
+        <!-- 移动项目到分组 -->
+        <api name='PutToMoveProjectToGroup' alias='MoveProjectToGroup' method='PUT' uri='/api/projects/[project_id]/project-groups/[group_id]'>
+          <inputs>
+            <variable name='project_id' type='string' capture='true'/>
+            <variable name='group_id' type='string' capture='true'/>
+          </inputs>
+          <outputs>
+            <extra cache='fupdate:project_id(group_id)'/>
+          </outputs>
+        </api>
+        
+        <save singular='true'/>
+        <save plural='true'/>
+        <fetches plural='true'/>
+        <fetch singular='true' by='project_id'/>
+        <delete singular='true' by='project_id'/>
+        <delete plural='true'/>
+      </manager>
+      <enum name='Visibility'>
+        <value int_value='0' alias='PUBLIC'/>
+        <value int_value='1' alias='PRIVATE'/>
+        <value int_value='2' alias='PERSONAL'/>
+      </enum>
+      <variable name='project_id' type='string' json_path='_id' sql_flag='primary_key'/>
+      <variable name='visibility' type='enum' enum='Project.Visibility' json_path='visibility'/>
+      <variable name='color' type='string' json_path='color'/>
+      <variable name='name' type='string' json_path='name'/>
+      <variable name='description' type='string' json_path='description'/>
+      <variable name='group_id' type='string' json_path='group'/>
+    </class>
+ </group>
+</module>
