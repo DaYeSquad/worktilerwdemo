@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, LCCUserStatus) {
-  LCCUserStatusNormal = 0,
-  LCCUserStatusInvited = 1,
-  LCCUserStatusPending = 2,
+typedef NS_ENUM(NSUInteger, WTCUserStatus) {
+  WTCUserStatusNormal = 0,
+  WTCUserStatusInvited = 1,
+  WTCUserStatusPending = 2,
 };
 
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *displayName;
 
-@property (nonatomic) LCCUserStatus status;
+@property (nonatomic) WTCUserStatus status;
 
 @end
 NS_ASSUME_NONNULL_END

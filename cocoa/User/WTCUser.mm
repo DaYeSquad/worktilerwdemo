@@ -33,12 +33,12 @@
   _coreHandle->set_display_name([displayName UTF8String]);
 }
 
--(LCCUserStatus)status {
-  return (LCCUserStatus)_coreHandle->status();
+-(WTCUserStatus)status {
+  return (WTCUserStatus)_coreHandle->status();
 }
 
--(void)setStatus:(LCCUserStatus)status {
-  _coreHandle->set_status((lesschat::User::Status)status);
+-(void)setStatus:(WTCUserStatus)status {
+  _coreHandle->set_status((worktile::User::Status)status);
 }
 
 #pragma mark - Core Addition

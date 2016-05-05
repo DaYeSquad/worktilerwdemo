@@ -5,8 +5,12 @@
 #import "WTCUserManager.h"
 #import "WTCUserManager_CoreAddition.h"
 
+#import "WTCDirector.h"
+
 #import "WTCUser.h"
 #import "WTCUser_CoreAddition.h"
+
+#import "WTCUtils.h"
 
 @implementation WTCUserManager
 
@@ -25,19 +29,21 @@
 
 #pragma mark - HTTP
 
-- (void)getAllUsersSuccess:(void (^)(NSArray<LCCUser *> *users))successBlock failure:(void (^)(NSError *error))failureBlock {
+- (void)getAllUsersSuccess:(void (^)(NSArray<WTCUser *> *users))successBlock failure:(void (^)(NSError *error))failureBlock {
   _coreManagerHandler->
-  GetAllUsers([successBlock, failureBlock](bool success, const std::string& errorUTF8String, std::vector<std::unique_ptr<lesschat::User>> coreUsers) {
+  GetAllUsers([successBlock, failureBlock](bool success,
+                                           const std::string& errorUTF8String,
+                                           std::vector<std::unique_ptr<worktile::User>> coreUsers) {
     if (success) {
       NSMutableArray *users = [NSMutableArray array];
       for (auto it = coreUsers.begin(); it != coreUsers.end(); ++it) {
-        [users addObject:[LCCUser userWithCoreUser:**it]];
+        [users addObject:[WTCUser userWithCoreUser:**it]];
       }
 
       successBlock(users);
     } else {
       NSString *error = [NSString stringWithUTF8String:errorUTF8String.c_str()];
-      failureBlock(LCCErrorWithNSString(error));
+      failureBlock(WTCErrorWithCoreError(error));
     }
   });
 }

@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-#import "WTCUser.h"
+#import "WorktileCore.h"
 
 @interface ViewController ()
 
@@ -19,20 +19,23 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  // 在正常的应用中，此处通常来自于 HTTP 请求，我们将在下一个 Example 中提供 HTTP 以及线程的策略
-  NSString *exampleJSON = @"{\
-  \"uid\":\"679efdf3960d45a0b8679693098135ff\",\
-  \"name\":\"gonglinjie\",\
-  \"display_name\":\"龚林杰\",\
-  \"email\":\"gonglinjie@worktile.com\",\
-  \"desc\":\"\",\
-  \"avatar\":\"https://api.worktile.com/avatar/80/ae2805fc-9aca-4f3b-8ac4-320c5d664db7.png\",\
-  \"status\":3,\
-  \"online\":0\
-  }";
-
-  WTCUser* user = [[WTCUser alloc] initWithJSON:exampleJSON];
-  self.outputLabel.text = [user statusDescription];
+  // 初始化 Director 以完成所有的 ObjectManager 的初始化
+  WTCDirector *director = [[WTCDirector alloc] init];
+  [WTCDirector resetDefaultDirector:director];
+  // [[WTCDirector defaultDirector] signIn...]
+  
+  // 此时可以开始使用 ObjectManager，此处用 UserManager 来获取所有的 users
+  WTCUser *user = [[WTCUserManager defaultManager] fetchUserFromCacheByUid:@"ooxx"];
+  if (user != nil) {
+    // 将缓存的 user 先显示在界面上，之后再在网络请求中获取新的 users
+  }
+  
+  // 此时可以开始使用 ObjectManager，此处用 UserManager 来获取所有的 users
+  [[WTCUserManager defaultManager] getAllUsersSuccess:^(NSArray<WTCUser *> *users) {
+    // 获取了所有 users 后刷新界面上的 users
+  } failure:^(NSError *error) {
+    // 错误的响应事件
+  }];
 }
 
 @end

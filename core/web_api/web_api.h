@@ -74,6 +74,12 @@ public:
   std::unique_ptr<sakura::HttpRequest> HttpRequestWithMethod(sakura::HttpRequest::Type method,
                                                              const std::string& api_path_wo_host) const;
   
+  static std::string ErrorMessageFromStateCode(int state_code);
+  
+  std::string BaseUrlForCurrentTeam() const;
+  
+  std::unique_ptr<sakura::HttpRequest> GenBaseRequestForCurrentTeam(sakura::HttpRequest::Type type) const;
+  
 private:
   std::unique_ptr<WebApiConfiguration> configuration_;
 

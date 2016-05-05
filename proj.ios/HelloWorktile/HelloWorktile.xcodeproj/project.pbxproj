@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		7D4F51151CDAF67D00666C96 /* WTCUser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51101CDAF67D00666C96 /* WTCUser.mm */; };
 		7D4F51161CDAF67D00666C96 /* WTCUserManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51131CDAF67D00666C96 /* WTCUserManager.mm */; };
+		7D4F511A1CDB324200666C96 /* WTCDirector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51191CDB324100666C96 /* WTCDirector.mm */; };
+		7D4F51201CDB3CBA00666C96 /* WTCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F511F1CDB3CBA00666C96 /* WTCUtils.m */; };
+		7D4F51351CDB3FE700666C96 /* SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51231CDB3FE700666C96 /* SHA1.cpp */; };
+		7D4F51361CDB3FE700666C96 /* SqlCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51251CDB3FE700666C96 /* SqlCommon.cpp */; };
+		7D4F51371CDB3FE700666C96 /* SqlDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51271CDB3FE700666C96 /* SqlDatabase.cpp */; };
+		7D4F51381CDB3FE700666C96 /* SqlField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51291CDB3FE700666C96 /* SqlField.cpp */; };
+		7D4F51391CDB3FE700666C96 /* SqlFieldSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F512B1CDB3FE700666C96 /* SqlFieldSet.cpp */; };
+		7D4F513A1CDB3FE700666C96 /* SqlRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F512D1CDB3FE700666C96 /* SqlRecord.cpp */; };
+		7D4F513B1CDB3FE700666C96 /* SqlRecordSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F512F1CDB3FE700666C96 /* SqlRecordSet.cpp */; };
+		7D4F513C1CDB3FE700666C96 /* SqlTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51311CDB3FE700666C96 /* SqlTable.cpp */; };
+		7D4F513D1CDB3FE700666C96 /* SqlValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51331CDB3FE700666C96 /* SqlValue.cpp */; };
+		7D4F51401CDB432100666C96 /* web_api_user.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F513F1CDB432100666C96 /* web_api_user.cc */; };
 		7DBB86461CD9C90600F0D2CD /* user.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86421CD9C90600F0D2CD /* user.cc */; };
 		7DBB86471CD9C90600F0D2CD /* user_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86441CD9C90600F0D2CD /* user_manager.cc */; };
 		7DBB864E1CD9CCBC00F0D2CD /* web_api.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB864C1CD9CCBC00F0D2CD /* web_api.cc */; };
@@ -43,6 +55,33 @@
 		7D4F51121CDAF67D00666C96 /* WTCUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUserManager.h; sourceTree = "<group>"; };
 		7D4F51131CDAF67D00666C96 /* WTCUserManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WTCUserManager.mm; sourceTree = "<group>"; };
 		7D4F51141CDAF67D00666C96 /* WTCUserManager_CoreAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUserManager_CoreAddition.h; sourceTree = "<group>"; };
+		7D4F51181CDB324100666C96 /* WTCDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCDirector.h; sourceTree = "<group>"; };
+		7D4F51191CDB324100666C96 /* WTCDirector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WTCDirector.mm; sourceTree = "<group>"; };
+		7D4F511B1CDB325500666C96 /* WTCDirector_CoreAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCDirector_CoreAddition.h; sourceTree = "<group>"; };
+		7D4F511C1CDB3C1600666C96 /* WorktileCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorktileCore.h; sourceTree = "<group>"; };
+		7D4F511E1CDB3CBA00666C96 /* WTCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUtils.h; sourceTree = "<group>"; };
+		7D4F511F1CDB3CBA00666C96 /* WTCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCUtils.m; sourceTree = "<group>"; };
+		7D4F51221CDB3FE700666C96 /* easySQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easySQLite.h; sourceTree = "<group>"; };
+		7D4F51231CDB3FE700666C96 /* SHA1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SHA1.cpp; sourceTree = "<group>"; };
+		7D4F51241CDB3FE700666C96 /* SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHA1.h; sourceTree = "<group>"; };
+		7D4F51251CDB3FE700666C96 /* SqlCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlCommon.cpp; sourceTree = "<group>"; };
+		7D4F51261CDB3FE700666C96 /* SqlCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlCommon.h; sourceTree = "<group>"; };
+		7D4F51271CDB3FE700666C96 /* SqlDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlDatabase.cpp; sourceTree = "<group>"; };
+		7D4F51281CDB3FE700666C96 /* SqlDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlDatabase.h; sourceTree = "<group>"; };
+		7D4F51291CDB3FE700666C96 /* SqlField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlField.cpp; sourceTree = "<group>"; };
+		7D4F512A1CDB3FE700666C96 /* SqlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlField.h; sourceTree = "<group>"; };
+		7D4F512B1CDB3FE700666C96 /* SqlFieldSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlFieldSet.cpp; sourceTree = "<group>"; };
+		7D4F512C1CDB3FE700666C96 /* SqlFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlFieldSet.h; sourceTree = "<group>"; };
+		7D4F512D1CDB3FE700666C96 /* SqlRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlRecord.cpp; sourceTree = "<group>"; };
+		7D4F512E1CDB3FE700666C96 /* SqlRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlRecord.h; sourceTree = "<group>"; };
+		7D4F512F1CDB3FE700666C96 /* SqlRecordSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlRecordSet.cpp; sourceTree = "<group>"; };
+		7D4F51301CDB3FE700666C96 /* SqlRecordSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlRecordSet.h; sourceTree = "<group>"; };
+		7D4F51311CDB3FE700666C96 /* SqlTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlTable.cpp; sourceTree = "<group>"; };
+		7D4F51321CDB3FE700666C96 /* SqlTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlTable.h; sourceTree = "<group>"; };
+		7D4F51331CDB3FE700666C96 /* SqlValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqlValue.cpp; sourceTree = "<group>"; };
+		7D4F51341CDB3FE700666C96 /* SqlValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlValue.h; sourceTree = "<group>"; };
+		7D4F513E1CDB42AE00666C96 /* WTCBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTCBase.h; sourceTree = "<group>"; };
+		7D4F513F1CDB432100666C96 /* web_api_user.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = web_api_user.cc; sourceTree = "<group>"; };
 		7DBB86421CD9C90600F0D2CD /* user.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cc; sourceTree = "<group>"; };
 		7DBB86431CD9C90600F0D2CD /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		7DBB86441CD9C90600F0D2CD /* user_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_manager.cc; sourceTree = "<group>"; };
@@ -113,8 +152,47 @@
 		7D4F51171CDAF6D700666C96 /* Director */ = {
 			isa = PBXGroup;
 			children = (
+				7D4F51181CDB324100666C96 /* WTCDirector.h */,
+				7D4F51191CDB324100666C96 /* WTCDirector.mm */,
+				7D4F511B1CDB325500666C96 /* WTCDirector_CoreAddition.h */,
 			);
 			path = Director;
+			sourceTree = "<group>";
+		};
+		7D4F511D1CDB3CAD00666C96 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D4F511E1CDB3CBA00666C96 /* WTCUtils.h */,
+				7D4F511F1CDB3CBA00666C96 /* WTCUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7D4F51211CDB3FE700666C96 /* easySQLite */ = {
+			isa = PBXGroup;
+			children = (
+				7D4F51221CDB3FE700666C96 /* easySQLite.h */,
+				7D4F51231CDB3FE700666C96 /* SHA1.cpp */,
+				7D4F51241CDB3FE700666C96 /* SHA1.h */,
+				7D4F51251CDB3FE700666C96 /* SqlCommon.cpp */,
+				7D4F51261CDB3FE700666C96 /* SqlCommon.h */,
+				7D4F51271CDB3FE700666C96 /* SqlDatabase.cpp */,
+				7D4F51281CDB3FE700666C96 /* SqlDatabase.h */,
+				7D4F51291CDB3FE700666C96 /* SqlField.cpp */,
+				7D4F512A1CDB3FE700666C96 /* SqlField.h */,
+				7D4F512B1CDB3FE700666C96 /* SqlFieldSet.cpp */,
+				7D4F512C1CDB3FE700666C96 /* SqlFieldSet.h */,
+				7D4F512D1CDB3FE700666C96 /* SqlRecord.cpp */,
+				7D4F512E1CDB3FE700666C96 /* SqlRecord.h */,
+				7D4F512F1CDB3FE700666C96 /* SqlRecordSet.cpp */,
+				7D4F51301CDB3FE700666C96 /* SqlRecordSet.h */,
+				7D4F51311CDB3FE700666C96 /* SqlTable.cpp */,
+				7D4F51321CDB3FE700666C96 /* SqlTable.h */,
+				7D4F51331CDB3FE700666C96 /* SqlValue.cpp */,
+				7D4F51341CDB3FE700666C96 /* SqlValue.h */,
+			);
+			name = easySQLite;
+			path = ../../../vendor/easySQLite;
 			sourceTree = "<group>";
 		};
 		7DBB86411CD9C90600F0D2CD /* user */ = {
@@ -144,6 +222,7 @@
 			children = (
 				7DBB864C1CD9CCBC00F0D2CD /* web_api.cc */,
 				7DBB864D1CD9CCBC00F0D2CD /* web_api.h */,
+				7D4F513F1CDB432100666C96 /* web_api_user.cc */,
 				7DBB864F1CD9CD6400F0D2CD /* web_api_configuration.cc */,
 				7DBB86501CD9CD6400F0D2CD /* web_api_configuration.h */,
 				7DBB86521CD9CD7500F0D2CD /* web_api_token.cc */,
@@ -221,6 +300,7 @@
 		7DF3A97F1CA29D20009E443A /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7D4F51211CDB3FE700666C96 /* easySQLite */,
 				7DF3A98B1CA2A002009E443A /* json11 */,
 			);
 			name = vendor;
@@ -247,6 +327,9 @@
 		7DF3A9931CA2A03E009E443A /* cocoa */ = {
 			isa = PBXGroup;
 			children = (
+				7D4F511C1CDB3C1600666C96 /* WorktileCore.h */,
+				7D4F513E1CDB42AE00666C96 /* WTCBase.h */,
+				7D4F511D1CDB3CAD00666C96 /* Utils */,
 				7D4F51171CDAF6D700666C96 /* Director */,
 				7D4F510E1CDAF67D00666C96 /* User */,
 			);
@@ -366,16 +449,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4F511A1CDB324200666C96 /* WTCDirector.mm in Sources */,
+				7D4F51361CDB3FE700666C96 /* SqlCommon.cpp in Sources */,
+				7D4F513D1CDB3FE700666C96 /* SqlValue.cpp in Sources */,
 				7DBB86461CD9C90600F0D2CD /* user.cc in Sources */,
+				7D4F513C1CDB3FE700666C96 /* SqlTable.cpp in Sources */,
 				7DBB86471CD9C90600F0D2CD /* user_manager.cc in Sources */,
+				7D4F513A1CDB3FE700666C96 /* SqlRecord.cpp in Sources */,
+				7D4F51391CDB3FE700666C96 /* SqlFieldSet.cpp in Sources */,
+				7D4F513B1CDB3FE700666C96 /* SqlRecordSet.cpp in Sources */,
 				7DF3A95D1CA2999A009E443A /* ViewController.m in Sources */,
 				7DBB86541CD9CD7500F0D2CD /* web_api_token.cc in Sources */,
+				7D4F51401CDB432100666C96 /* web_api_user.cc in Sources */,
 				7DF3A95A1CA2999A009E443A /* AppDelegate.m in Sources */,
+				7D4F51351CDB3FE700666C96 /* SHA1.cpp in Sources */,
 				7DF3A9571CA2999A009E443A /* main.m in Sources */,
+				7D4F51201CDB3CBA00666C96 /* WTCUtils.m in Sources */,
 				7DBB865D1CD9DAED00F0D2CD /* object_manager.cc in Sources */,
+				7D4F51371CDB3FE700666C96 /* SqlDatabase.cpp in Sources */,
 				7D4F51161CDAF67D00666C96 /* WTCUserManager.mm in Sources */,
 				7D4F51151CDAF67D00666C96 /* WTCUser.mm in Sources */,
 				7DBB864E1CD9CCBC00F0D2CD /* web_api.cc in Sources */,
+				7D4F51381CDB3FE700666C96 /* SqlField.cpp in Sources */,
 				7DBB865A1CD9D3CA00F0D2CD /* director.cc in Sources */,
 				7DBB86511CD9CD6400F0D2CD /* web_api_configuration.cc in Sources */,
 				7DF3A9901CA2A002009E443A /* json11.cpp in Sources */,

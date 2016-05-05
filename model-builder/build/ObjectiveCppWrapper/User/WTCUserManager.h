@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @name HTTP
 ///-----------------------------------------
 
-- (void)getAllUsersSuccess:(void (^)(NSArray<LCCUser *> *users))successBlock failure:(void (^)(NSError *error))failureBlock;
+- (void)getAllUsersSuccess:(void (^)(NSArray<WTCUser *> *users))successBlock failure:(void (^)(NSError *error))failureBlock;
 
 ///-----------------------------------------
 /// @name Persistent store
