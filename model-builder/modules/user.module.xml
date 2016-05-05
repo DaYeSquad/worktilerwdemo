@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- Version 6.0, Module.xml demo
+  -  语法见 cpp-module-builder 中的 README : https://github.com/DaYeSquad/cpp-core-model-builder
+  -  Frank Lin © 2016
+ -->
+
+<module>
+  <!-- group 表示会在 C++ 生成一个 user 的文件夹，在 Objective-C++/Java 生成一个 User 的文件夹 -->
+  <group name='user'>
+    <!-- class 表示会在 C++/Objective-C++/Java 生成一个 User 对象 -->
+    <class name='User'>
+
+      <!-- enum 表示会在 C++ 生成一个 enum class Status，即 worktile::User::Status，
+           会在 Objective-C++ 构建出对应的 typedef NS_ENUM(NSUInteger, WTCUserStatus)，
+           会在 Java 构建出对应的 @intdef (Android Style) 的 enum -->
+      <enum name='Status'>
+        <value int_value='0' alias='NORMAL'/>
+        <value int_value='1' alias='INVITED'/>
+        <value int_value='2' alias='PENDING'/>
+      </enum>
+
+      <!-- variable 表示会在 C++ 生成一个 uid_，并提供 getter/setter，
+           会在 Objective-C++ 构建出对应的 readonly property，
+           会在 Java 构建出 mUid 并且提供 getter，
+           sql_flag='primary_key' 表示这个是 User 对象的唯一标示符 -->
+      <variable name='uid' type='string' json_path='_id' sql_flag='primary_key'/>
+      <variable name='username' type='string' json_path='username'/>
+      <variable name='display_name' type='string' json_path='display_name'/>
+
+      <!-- enum 类型的 variable type 处只需要填 enum，
+           但是需要一个额外的 enum='class.enumClassName' 来告诉 builder enum 类型 -->
+      <variable name='status' type='enum' enum='User.Status' json_path='status'/>
+
+      <!-- manager 表示会在 C++/Objective-C++/Java 生成一个 UserManager 对象
+           Manager 负责 HTTP 请求以及 SQLite cache，分别对应 <api/> 以及 <save/>,<fetch/>,<delete/> 标记 -->
+      <manager name='UserManager'>
+        <!-- 生成 SaveUsersToCache 方法-->
+        <saves/>
+        <!-- 生成 FetchUsersFromCache 方法-->
+        <fetches/>
+        <!-- 生成 FetchUserFromCacheByUid 方法-->
+        <fetch by='uid'/>
+
+        <!-- 获取所有的成员
+             name 表示在 WebApi 里面的方法名，alias 表示的是在 UserManager 中的方法名，
+             method 可以是 GET/PUT/POST/DELETE 中的一种，
+             uri 代表一个固定域名之后可变部分的 string-->
+        <api name='GetAllUsers' alias='GetAllUsers' method='GET' uri='/api/mobile/users'>
+          <!-- inputs 代表输入的变量，详见 cpp-model-builder 的 README : https://github.com/DaYeSquad/cpp-core-model-builder-->
+          <inputs>
+          </inputs>
+          <!-- outputs 代表输出的变量，详见 cpp-model-builder 的 README : https://github.com/DaYeSquad/cpp-core-model-builder
+               这里的 users 代表在请求后会返回一个 users 变量，其类型为 User 对象的数组形式，cache='saves' 表示用 <saves/> 生成的方法来缓存该结果-->
+          <outputs>
+            <variable name='users' type='[{User}]' json_path='data' cache='saves'/>
+          </outputs>
+        </api>
+      </manager>
+    </class>
+  </group>
+</module>

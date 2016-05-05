@@ -10,4 +10,6 @@ IPHONEOS_DEPLOYMENT_TARGET = 8.0
 
 PRODUCT_NAME = HelloWorktile
 
-HEADER_SEARCH_PATHS = ../../vendor ../../core ../../cocoa
+HEADER_SEARCH_PATHS = ../../vendor ../../vendor/sakura/include/ios ../../vendor/curl ../../vendor/easySQLite ../../vendor/libsqlite/include ../../core ../../cocoa
+
+GCC_PREPROCESSOR_DEFINITIONS = WTC_PLATFORM=WTC_PLATFORM_IOS

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D4F51151CDAF67D00666C96 /* WTCUser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51101CDAF67D00666C96 /* WTCUser.mm */; };
+		7D4F51161CDAF67D00666C96 /* WTCUserManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F51131CDAF67D00666C96 /* WTCUserManager.mm */; };
+		7DBB86461CD9C90600F0D2CD /* user.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86421CD9C90600F0D2CD /* user.cc */; };
+		7DBB86471CD9C90600F0D2CD /* user_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86441CD9C90600F0D2CD /* user_manager.cc */; };
+		7DBB864E1CD9CCBC00F0D2CD /* web_api.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB864C1CD9CCBC00F0D2CD /* web_api.cc */; };
+		7DBB86511CD9CD6400F0D2CD /* web_api_configuration.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB864F1CD9CD6400F0D2CD /* web_api_configuration.cc */; };
+		7DBB86541CD9CD7500F0D2CD /* web_api_token.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86521CD9CD7500F0D2CD /* web_api_token.cc */; };
+		7DBB865A1CD9D3CA00F0D2CD /* director.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB86581CD9D3CA00F0D2CD /* director.cc */; };
+		7DBB865D1CD9DAED00F0D2CD /* object_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB865B1CD9DAED00F0D2CD /* object_manager.cc */; };
 		7DF3A9571CA2999A009E443A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A9561CA2999A009E443A /* main.m */; };
 		7DF3A95A1CA2999A009E443A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A9591CA2999A009E443A /* AppDelegate.m */; };
 		7DF3A95D1CA2999A009E443A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A95C1CA2999A009E443A /* ViewController.m */; };
@@ -15,8 +24,6 @@
 		7DF3A9651CA2999A009E443A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF3A9631CA2999A009E443A /* LaunchScreen.storyboard */; };
 		7DF3A9701CA2999A009E443A /* HelloWorktileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A96F1CA2999A009E443A /* HelloWorktileTests.m */; };
 		7DF3A9901CA2A002009E443A /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A98C1CA2A002009E443A /* json11.cpp */; };
-		7DF3A9981CA2A043009E443A /* user.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A9961CA2A043009E443A /* user.cc */; };
-		7DF3A99B1CA2A061009E443A /* WTCUser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3A99A1CA2A061009E443A /* WTCUser.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +37,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D4F510F1CDAF67D00666C96 /* WTCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUser.h; sourceTree = "<group>"; };
+		7D4F51101CDAF67D00666C96 /* WTCUser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WTCUser.mm; sourceTree = "<group>"; };
+		7D4F51111CDAF67D00666C96 /* WTCUser_CoreAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUser_CoreAddition.h; sourceTree = "<group>"; };
+		7D4F51121CDAF67D00666C96 /* WTCUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUserManager.h; sourceTree = "<group>"; };
+		7D4F51131CDAF67D00666C96 /* WTCUserManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WTCUserManager.mm; sourceTree = "<group>"; };
+		7D4F51141CDAF67D00666C96 /* WTCUserManager_CoreAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUserManager_CoreAddition.h; sourceTree = "<group>"; };
+		7DBB86421CD9C90600F0D2CD /* user.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cc; sourceTree = "<group>"; };
+		7DBB86431CD9C90600F0D2CD /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
+		7DBB86441CD9C90600F0D2CD /* user_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_manager.cc; sourceTree = "<group>"; };
+		7DBB86451CD9C90600F0D2CD /* user_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_manager.h; sourceTree = "<group>"; };
+		7DBB86491CD9C91A00F0D2CD /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
+		7DBB864A1CD9C91A00F0D2CD /* options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = options.h; sourceTree = "<group>"; };
+		7DBB864C1CD9CCBC00F0D2CD /* web_api.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = web_api.cc; sourceTree = "<group>"; };
+		7DBB864D1CD9CCBC00F0D2CD /* web_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = web_api.h; sourceTree = "<group>"; };
+		7DBB864F1CD9CD6400F0D2CD /* web_api_configuration.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = web_api_configuration.cc; sourceTree = "<group>"; };
+		7DBB86501CD9CD6400F0D2CD /* web_api_configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = web_api_configuration.h; sourceTree = "<group>"; };
+		7DBB86521CD9CD7500F0D2CD /* web_api_token.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = web_api_token.cc; sourceTree = "<group>"; };
+		7DBB86531CD9CD7500F0D2CD /* web_api_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = web_api_token.h; sourceTree = "<group>"; };
+		7DBB86551CD9D0D900F0D2CD /* coding_interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = coding_interface.h; sourceTree = "<group>"; };
+		7DBB86561CD9D13C00F0D2CD /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
+		7DBB86581CD9D3CA00F0D2CD /* director.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = director.cc; sourceTree = "<group>"; };
+		7DBB86591CD9D3CA00F0D2CD /* director.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = director.h; sourceTree = "<group>"; };
+		7DBB865B1CD9DAED00F0D2CD /* object_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object_manager.cc; sourceTree = "<group>"; };
+		7DBB865C1CD9DAED00F0D2CD /* object_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object_manager.h; sourceTree = "<group>"; };
 		7DF3A9521CA29999009E443A /* HelloWorktile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorktile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF3A9561CA2999A009E443A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7DF3A9581CA2999A009E443A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,12 +77,6 @@
 		7DF3A9891CA29DB6009E443A /* ios-common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ios-common.xcconfig"; sourceTree = "<group>"; };
 		7DF3A98C1CA2A002009E443A /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
 		7DF3A98D1CA2A002009E443A /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
-		7DF3A9951CA2A043009E443A /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
-		7DF3A9961CA2A043009E443A /* user.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cc; sourceTree = "<group>"; };
-		7DF3A9971CA2A043009E443A /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
-		7DF3A9991CA2A061009E443A /* WTCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUser.h; sourceTree = "<group>"; };
-		7DF3A99A1CA2A061009E443A /* WTCUser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WTCUser.mm; sourceTree = "<group>"; };
-		7DF3A99C1CA2A07C009E443A /* WTCUser_CoreAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCUser_CoreAddition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +97,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D4F510E1CDAF67D00666C96 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				7D4F510F1CDAF67D00666C96 /* WTCUser.h */,
+				7D4F51101CDAF67D00666C96 /* WTCUser.mm */,
+				7D4F51111CDAF67D00666C96 /* WTCUser_CoreAddition.h */,
+				7D4F51121CDAF67D00666C96 /* WTCUserManager.h */,
+				7D4F51131CDAF67D00666C96 /* WTCUserManager.mm */,
+				7D4F51141CDAF67D00666C96 /* WTCUserManager_CoreAddition.h */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7D4F51171CDAF6D700666C96 /* Director */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Director;
+			sourceTree = "<group>";
+		};
+		7DBB86411CD9C90600F0D2CD /* user */ = {
+			isa = PBXGroup;
+			children = (
+				7DBB86421CD9C90600F0D2CD /* user.cc */,
+				7DBB86431CD9C90600F0D2CD /* user.h */,
+				7DBB86441CD9C90600F0D2CD /* user_manager.cc */,
+				7DBB86451CD9C90600F0D2CD /* user_manager.h */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		7DBB86481CD9C91A00F0D2CD /* base */ = {
+			isa = PBXGroup;
+			children = (
+				7DBB86491CD9C91A00F0D2CD /* base.h */,
+				7DBB86561CD9D13C00F0D2CD /* macros.h */,
+				7DBB864A1CD9C91A00F0D2CD /* options.h */,
+				7DBB86551CD9D0D900F0D2CD /* coding_interface.h */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		7DBB864B1CD9CCBC00F0D2CD /* web_api */ = {
+			isa = PBXGroup;
+			children = (
+				7DBB864C1CD9CCBC00F0D2CD /* web_api.cc */,
+				7DBB864D1CD9CCBC00F0D2CD /* web_api.h */,
+				7DBB864F1CD9CD6400F0D2CD /* web_api_configuration.cc */,
+				7DBB86501CD9CD6400F0D2CD /* web_api_configuration.h */,
+				7DBB86521CD9CD7500F0D2CD /* web_api_token.cc */,
+				7DBB86531CD9CD7500F0D2CD /* web_api_token.h */,
+			);
+			path = web_api;
+			sourceTree = "<group>";
+		};
+		7DBB86571CD9D3CA00F0D2CD /* director */ = {
+			isa = PBXGroup;
+			children = (
+				7DBB86581CD9D3CA00F0D2CD /* director.cc */,
+				7DBB86591CD9D3CA00F0D2CD /* director.h */,
+				7DBB865B1CD9DAED00F0D2CD /* object_manager.cc */,
+				7DBB865C1CD9DAED00F0D2CD /* object_manager.h */,
+			);
+			path = director;
+			sourceTree = "<group>";
+		};
 		7DF3A9491CA29999009E443A = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				7DF3A9881CA29DA6009E443A /* config */,
-				7DF3A97F1CA29D20009E443A /* vendor */,
-				7DF3A9941CA2A043009E443A /* core */,
 				7DF3A9931CA2A03E009E443A /* cocoa */,
+				7DF3A9941CA2A043009E443A /* core */,
+				7DF3A97F1CA29D20009E443A /* vendor */,
 				7DF3A9581CA2999A009E443A /* AppDelegate.h */,
 				7DF3A9591CA2999A009E443A /* AppDelegate.m */,
 				7DF3A95B1CA2999A009E443A /* ViewController.h */,
@@ -156,9 +247,8 @@
 		7DF3A9931CA2A03E009E443A /* cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				7DF3A9991CA2A061009E443A /* WTCUser.h */,
-				7DF3A99A1CA2A061009E443A /* WTCUser.mm */,
-				7DF3A99C1CA2A07C009E443A /* WTCUser_CoreAddition.h */,
+				7D4F51171CDAF6D700666C96 /* Director */,
+				7D4F510E1CDAF67D00666C96 /* User */,
 			);
 			name = cocoa;
 			path = ../../../cocoa;
@@ -167,9 +257,10 @@
 		7DF3A9941CA2A043009E443A /* core */ = {
 			isa = PBXGroup;
 			children = (
-				7DF3A9951CA2A043009E443A /* base.h */,
-				7DF3A9961CA2A043009E443A /* user.cc */,
-				7DF3A9971CA2A043009E443A /* user.h */,
+				7DBB864B1CD9CCBC00F0D2CD /* web_api */,
+				7DBB86481CD9C91A00F0D2CD /* base */,
+				7DBB86571CD9D3CA00F0D2CD /* director */,
+				7DBB86411CD9C90600F0D2CD /* user */,
 			);
 			name = core;
 			path = ../../../core;
@@ -275,11 +366,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DBB86461CD9C90600F0D2CD /* user.cc in Sources */,
+				7DBB86471CD9C90600F0D2CD /* user_manager.cc in Sources */,
 				7DF3A95D1CA2999A009E443A /* ViewController.m in Sources */,
+				7DBB86541CD9CD7500F0D2CD /* web_api_token.cc in Sources */,
 				7DF3A95A1CA2999A009E443A /* AppDelegate.m in Sources */,
 				7DF3A9571CA2999A009E443A /* main.m in Sources */,
-				7DF3A99B1CA2A061009E443A /* WTCUser.mm in Sources */,
-				7DF3A9981CA2A043009E443A /* user.cc in Sources */,
+				7DBB865D1CD9DAED00F0D2CD /* object_manager.cc in Sources */,
+				7D4F51161CDAF67D00666C96 /* WTCUserManager.mm in Sources */,
+				7D4F51151CDAF67D00666C96 /* WTCUser.mm in Sources */,
+				7DBB864E1CD9CCBC00F0D2CD /* web_api.cc in Sources */,
+				7DBB865A1CD9D3CA00F0D2CD /* director.cc in Sources */,
+				7DBB86511CD9CD6400F0D2CD /* web_api_configuration.cc in Sources */,
 				7DF3A9901CA2A002009E443A /* json11.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +569,7 @@
 				7DF3A9761CA2999A009E443A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DF3A9771CA2999A009E443A /* Build configuration list for PBXNativeTarget "HelloWorktileTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +578,7 @@
 				7DF3A9791CA2999A009E443A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
