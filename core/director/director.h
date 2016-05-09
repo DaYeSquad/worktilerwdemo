@@ -81,10 +81,6 @@ public:
   
   std::unique_ptr<sql::Table> SqlTable(const std::string& table_name,
                                        sql::Field* definition);
-  
-  int CurrentDatabaseVersion() const;
-  
-  bool RemoveTable() const;
 
 private:
   friend class UserManager;
@@ -97,8 +93,6 @@ private:
 
   std::unique_ptr<sql::Database> main_db_;
   std::mutex main_db_mutex_;
-  
-  bool DeleteExpiredTables();
 
   // Manager --------------------------------------------------------
 

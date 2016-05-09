@@ -12,9 +12,11 @@
 #include "user/user_manager.h"
 #include "web_api/web_api.h"
 
-USING_NS_SKR;
 using std::unique_ptr;
 using std::string;
+using sakura::log_event;
+using sakura::log_error;
+using sakura::FileUtils;
 
 NS_WTC_BEGIN
 
@@ -75,7 +77,7 @@ bool Director::InitOrDie(const std::string& base_directory, const User& me, cons
   string folder_path = path + "/" + me.uid() + "/";
   string main_db_path = folder_path + "Worktile.db";
   
-  log_event("database path is %s", main_db_path.c_str());
+  sakura::log_event("database path is %s", main_db_path.c_str());
   
   if (!FileUtils::SharedFileUtils()->IsDirectoryExist(folder_path)) {
     FileUtils::SharedFileUtils()->CreateDirectory(folder_path);

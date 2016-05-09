@@ -1,10 +1,15 @@
 package worktile.com.helloworktile;
 
+import android.os.Handler;
+import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
-import com.worktilecore.User;
+import com.worktilecore.core.api.WebApiWithListResponse;
+import com.worktilecore.core.base.WorktileObject;
+import com.worktilecore.core.director.Director;
+import com.worktilecore.core.user.User;
+import com.worktilecore.core.user.UserManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,26 +22,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 来自 Worktile OpenAPI 的示例 (https://open.worktile.com/wiki/user_info.html#/user)
-        // 下一节将会示例 HTTP 请求的方式
-        String exampleJson = "{\n" +
-                "   \"uid\":\"679efdf3960d45a0b8679693098135ff\",\n" +
-                "   \"name\":\"gonglinjie\",\n" +
-                "   \"display_name\":\"龚林杰\",\n" +
-                "   \"email\":\"gonglinjie@worktile.com\",\n" +
-                "   \"desc\":\"\",\n" +
-                "   \"avatar\":\"https://api.worktile.com/avatar/80/ae2805fc-9aca-4f3b-8ac4-320c5d664db7.png\",\n" +
-                "   \"status\":3,\n" +
-                "   \"online\":0\n" +
-                "}";
-        User user = new User(exampleJson);
+        // 在第一次登录前构建 Stranger 模式的的 Director
+        Director director = new Director();
+        director.initAsStranger();
+        director.signIn(); // 此处仅仅模拟登录，在登录成功之后，可以操作所有的 ObjectManagers
 
-        TextView textView = (TextView)findViewById(R.id.example_text_view);
-        textView.setText(user.statusDescription());
+        // 从缓存中取出需要的 users 并显示在列表中
+        User[] users = UserManager.getInstance().fetchUsersFromCache();
+        displayAllUsers(users);
 
-        // 释放内存 (这里是 NDK 方式在这种设计中比较难受的一个地方，未释放的内存将会造成 Memroy leak)
-        // 我们在实际开发中定义所有的 CoreObject 在一个 Activity 中都不要整体的传给第二个 Activity，
-        //  而是仅传递 ID, 在第二个 Activity 中，我们通过数据库查询取出对象并且显示 (这些内容将在第二节中提供)
-        user.dispose();
+        // 此时屏幕上已经显示出来了缓存数据，可以使用 HTTP 请求请求数据
+        // 在请求成功后，在主线程中显示数据
+        UserManager.getInstance().getAllUsers(new WebApiWithListResponse() {
+            @Override
+            public void onSuccess(WorktileObject[] response) {
+                final User[] users = (User[])response;
+                Handler mainHandler = new Handler(getMainLooper());
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        displayAllUsers(users);
+                    }
+                });
+            }
+        });
+    }
+
+    @UiThread
+    void displayAllUsers(User[] users) {
+        // display users data as list view.
     }
 }

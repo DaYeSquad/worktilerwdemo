@@ -5,6 +5,40 @@ def worktileJniPath = "../../../jni"
 def worktileVendorPath = "../../../vendor"
 
 model {
+    repositories {
+        libs(PrebuiltLibraries) {
+            sqlite {
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${worktileVendorPath}/libsqlite/libs/${targetPlatform.getName()}/libsqlite.a")
+                }
+            }
+
+            curl {
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${worktileVendorPath}/curl/prebuilt/android/${targetPlatform.getName()}/libcurl.a")
+                }
+            }
+
+            ssl {
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${worktileVendorPath}/curl/prebuilt/android/${targetPlatform.getName()}/libssl.a")
+                }
+            }
+
+            crypto {
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${worktileVendorPath}/curl/prebuilt/android/${targetPlatform.getName()}/libcrypto.a")
+                }
+            }
+
+            sakura {
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${worktileVendorPath}/sakura/prebuilt/android/${targetPlatform.getName()}/libsakura.a")
+                }
+            }
+        }
+    }
+
     android {
         compileSdkVersion 23
         buildToolsVersion "23.0.2"
@@ -42,8 +76,11 @@ model {
             cppFlags.add("-DWTC_PLATFORM=WTC_PLATFORM_ANDROID")
 
             cppFlags.add("-I${file("${worktileCorePath}")}".toString())
-            cppFlags.add("-I${file("${worktileVendorPath}")}".toString())
             cppFlags.add("-I${file("${worktileJniPath}")}".toString())
+            cppFlags.add("-I${file("${worktileVendorPath}")}".toString())
+            cppFlags.add("-I${file("${worktileVendorPath}/curl")}".toString())
+            cppFlags.add("-I${file("${worktileVendorPath}/libsqlite/include")}".toString())
+            cppFlags.add("-I${file("${worktileVendorPath}/sakura/include/android")}".toString())
         }
 
         sources.main {
@@ -60,6 +97,14 @@ model {
                             "${worktileJniPath}",
                             "${worktileVendorPath}"
                 }
+
+                dependencies {
+                    library "sqlite" linkage "static"
+                    library "curl" linkage "static"
+                    library "ssl" linkage "static"
+                    library "crypto" linkage "static"
+                    library "sakura" linkage "static"
+                }
             }
         }
     }
@@ -68,5 +113,5 @@ model {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
 }

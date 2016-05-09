@@ -1,4 +1,4 @@
-package com.worktilecore;
+package com.worktilecore.core.jni;
 
 /**
  * 与 core 相关的 C++ 的封装应当继承自该类

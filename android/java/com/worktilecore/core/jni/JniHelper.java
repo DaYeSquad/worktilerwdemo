@@ -1,4 +1,4 @@
-package com.worktilecore;
+package com.worktilecore.core.jni;
 
 /**
  * 用于辅助 JNI 操作的工具类
